@@ -14,12 +14,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="styles/872a22d4.style.css">
+    <link rel="stylesheet" href="styles/2cc74364.style.css">
 </head>
 <body ng-app="ngRegexApp">
 
 <div class="pure-g-r" id="layout">
-
 
     <!-- AllApp -->
     <div ng-controller="AllApp">
@@ -28,7 +27,7 @@
             <span class="icon-menu-2"></span>
         </a>
         <!-- Method-List -->
-        <div class="pure-u" id="method-list" ng-controller="ListCtrl">
+        <div class="pure-u hidden" id="method-list" ng-controller="ListCtrl" show-on-load="">
             <div class="pure-menu pure-menu-open">
 
                 <div class="regex-section">
@@ -140,9 +139,14 @@
         </div>
     </div>
 </div>
+<div class="page-mask" hide-on-load="">
+    <div class="child">
+        <p>Please wait</p>
+        <span class="icon-spinner-2 rotate-always"></span>
+    </div>
+</div>
 
-
-<script src="scripts/20bd6c58.scripts.js"></script>
+<script src="scripts/1013f053.scripts.js"></script>
 
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
