@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="styles/ed53426f.style.css">
+    <link rel="stylesheet" href="styles/8c5ca252.style.css">
 </head>
 <body ng-app="ngRegexApp">
 
@@ -42,18 +42,18 @@
 
                         <form action="" ng-submit="addSection(method, method.inputVal);">
 
-                            <input type="text" class="method-input" id="input-{{method.method}}" ng-model="method.inputVal" placeholder="..." ng-if="method.input">
+                            <input type="text" class="method-input" id="input-{{method.method}}" ng-model="method.inputVal" placeholder="..." ng-trim="false" ng-if="method.input">
                         </form>
 
                         <form action="" ng-submit="addRangeSection(method, method.inputVal1, method.inputVal2);">
 
-                            <input type="text" class="range-input" id="range-input-01" ng-model="method.inputVal1" placeholder="..." ng-if="method.range">
+                            <input type="text" class="range-input" id="range-input-01" ng-model="method.inputVal1" placeholder="..." ng-trim="false" ng-if="method.range">
 
-                            <input type="text" class="range-input" id="range-input-02" placeholder="..." ng-model="method.inputVal2" ng-if="method.range">
+                            <input type="text" class="range-input" id="range-input-02" placeholder="..." ng-trim="false" ng-model="method.inputVal2" ng-if="method.range">
                         </form>
 
                         <!-- Title for methods with no input -->
-                        <p ng-if="!method.input">{{method.name}}</p>
+                        <p ng-if="!method.input && !method.range">{{method.name}}</p>
 
                     </div>
 
@@ -86,15 +86,16 @@
                     </li>
                 </ul>
 
-                <div class="error">{{data.errorMessage}}</div>
+                <div class="error" id="errorText" ng-if="data.errorMessage">{{data.errorMessage}} <span ng-click="data.errorMessage = ''" id="errorClose" class="error__close icon-close"></span></div>
 
                 <div class="intro" id="intro" ng-show="!data.regexSections.length">
                     <p class="intro__arrow"><span class="icon-arrow-left"></span></p>
                      <p class="intro__text">Add sections from the menu on the left & you'll see the Regex being built up below.</p>
-
                 </div>
 
                 <!--<p>Javascript Regular Expression:</p>-->
+                <br>
+                <p class="intro__text left"><strong>The Long-Hand Version</strong></p>
                 <div class="regex">
 
                     <pre class="snippet">
@@ -102,12 +103,16 @@
 
 {{ data.regexTestCode }}</pre>
 
+                    <p class="intro__text left"><strong>The Short-Hand Version</strong></p>
+                    <pre class="snippet">
+<code id="shorthandRegex">{{ data.sh_regex_code }}</code>
+                    </pre>
                 </div>
 
                 <div id="test-container" ng-show="data.regexSections.length">
 
                 <p>Enter something to test:</p>
-                    <input type="text" id="input-test" ng-model="data.testString" ng-keyup="runTest(data.testString)">
+                    <input type="text" id="input-test" ng-model="data.testString" ng-trim="false" ng-keyup="runTest(data.testString)">
 
                 <p> <span>Result: <span id="result-output">{{data.result}}</span> <span result-output="" id="result-output-icon"></span></span></p>
 
@@ -147,7 +152,7 @@
     </div>
 </div>
 
-<script src="scripts/cf46b298.scripts.js"></script>
+<script src="scripts/3a296a00.scripts.js"></script>
 
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
